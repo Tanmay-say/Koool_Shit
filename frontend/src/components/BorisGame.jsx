@@ -1504,7 +1504,9 @@ const BorisGame = () => {
       style={{
         position: 'fixed',
         inset: 0,
-        background: '#1a0a2e',
+        background: 'linear-gradient(135deg, #0a0a2e 0%, #1a0a3e 25%, #2d1b69 50%, #1a0a3e 75%, #0a0a2e 100%)',
+        backgroundSize: '400% 400%',
+        animation: 'gradientShift 15s ease infinite',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -1512,62 +1514,209 @@ const BorisGame = () => {
         fontFamily: '"Courier New", monospace',
         color: '#fff',
         padding: '20px',
+        overflow: 'hidden',
       }}
     >
-      <h1
-        data-testid="title"
-        style={{
-          fontSize: '72px',
-          color: '#ff3366',
-          marginBottom: '20px',
-          textShadow: '0 0 20px #ff3366',
-          animation: 'pulse 2s infinite',
-        }}
-      >
-        LEVEL DEVIL
-      </h1>
-      <p style={{ fontSize: '32px', color: '#ffd700', fontStyle: 'italic', marginBottom: '40px' }}>feat. Boris</p>
-      <p
-        data-testid="warning-text"
-        style={{
-          fontSize: '24px',
-          color: '#ff6b35',
-          marginBottom: '40px',
-          animation: 'blink 1s infinite',
-          textAlign: 'center',
-        }}
-      >
-        ⚠ NOTHING IS AS IT SEEMS ⚠
-      </p>
-      <button
-        data-testid="play-button"
-        onClick={() => setGameScreen('worldmap')}
-        style={{
-          fontSize: '28px',
-          padding: '20px 60px',
-          background: 'linear-gradient(135deg, #e8892a, #c45e10)',
-          border: 'none',
-          borderRadius: '50px',
-          color: '#fff',
-          cursor: 'pointer',
+      {/* Animated background particles */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'radial-gradient(circle at 20% 50%, rgba(255, 51, 102, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(74, 184, 232, 0.1) 0%, transparent 50%)',
+        animation: 'float 20s ease-in-out infinite',
+        zIndex: 0,
+      }} />
+      
+      {/* Glowing orbs */}
+      <div style={{
+        position: 'absolute',
+        top: '10%',
+        left: '10%',
+        width: '150px',
+        height: '150px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(255, 51, 102, 0.3) 0%, transparent 70%)',
+        filter: 'blur(40px)',
+        animation: 'float 8s ease-in-out infinite',
+        zIndex: 0,
+      }} />
+      
+      <div style={{
+        position: 'absolute',
+        bottom: '15%',
+        right: '15%',
+        width: '200px',
+        height: '200px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(74, 184, 232, 0.3) 0%, transparent 70%)',
+        filter: 'blur(50px)',
+        animation: 'float 10s ease-in-out infinite reverse',
+        zIndex: 0,
+      }} />
+      
+      {/* Main content */}
+      <div style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
+        {/* Subtitle badge */}
+        <div style={{
+          display: 'inline-block',
+          padding: '8px 24px',
+          background: 'rgba(255, 215, 0, 0.15)',
+          border: '2px solid #ffd700',
+          borderRadius: '30px',
+          fontSize: '16px',
+          color: '#ffd700',
           fontWeight: 'bold',
-          boxShadow: '0 4px 20px rgba(232, 137, 42, 0.5)',
-          transition: 'transform 0.2s',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-      >
-        PLAY
-      </button>
+          marginBottom: '30px',
+          boxShadow: '0 0 20px rgba(255, 215, 0, 0.3)',
+          letterSpacing: '2px',
+        }}>
+          🎮 PLATFORMER CHALLENGE
+        </div>
+        
+        <h1
+          data-testid="title"
+          style={{
+            fontSize: '96px',
+            background: 'linear-gradient(135deg, #ff3366 0%, #ff6b9d 25%, #ffd700 50%, #ff6b9d 75%, #ff3366 100%)',
+            backgroundSize: '200% auto',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            marginBottom: '10px',
+            textShadow: 'none',
+            fontWeight: 'bold',
+            letterSpacing: '8px',
+            animation: 'shimmer 3s linear infinite, pulse 2s ease-in-out infinite',
+            lineHeight: '1.2',
+          }}
+        >
+          KOOOL SHIT
+        </h1>
+        
+        <p style={{ 
+          fontSize: '38px', 
+          color: '#4ab8e8', 
+          fontStyle: 'italic', 
+          marginBottom: '50px',
+          textShadow: '0 0 10px rgba(74, 184, 232, 0.5)',
+          fontWeight: '600',
+        }}>
+          feat. Boris the Blue Devil
+        </p>
+        
+        <p
+          data-testid="warning-text"
+          style={{
+            fontSize: '28px',
+            color: '#ff6b35',
+            marginBottom: '60px',
+            animation: 'blink 1.5s infinite, glow 2s ease-in-out infinite',
+            textAlign: 'center',
+            fontWeight: 'bold',
+            textShadow: '0 0 10px rgba(255, 107, 53, 0.8)',
+            letterSpacing: '3px',
+          }}
+        >
+          ⚠ NOTHING IS AS IT SEEMS ⚠
+        </p>
+        
+        <button
+          data-testid="play-button"
+          onClick={() => setGameScreen('worldmap')}
+          style={{
+            fontSize: '32px',
+            padding: '24px 80px',
+            background: 'linear-gradient(135deg, #ff3366 0%, #ff6b35 50%, #ffd700 100%)',
+            backgroundSize: '200% auto',
+            border: '3px solid rgba(255, 255, 255, 0.3)',
+            borderRadius: '60px',
+            color: '#fff',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+            boxShadow: '0 8px 32px rgba(255, 51, 102, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+            transition: 'all 0.3s ease',
+            position: 'relative',
+            overflow: 'hidden',
+            letterSpacing: '4px',
+            textTransform: 'uppercase',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.1) translateY(-5px)';
+            e.currentTarget.style.boxShadow = '0 12px 40px rgba(255, 51, 102, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
+            e.currentTarget.style.backgroundPosition = 'right center';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1) translateY(0)';
+            e.currentTarget.style.boxShadow = '0 8px 32px rgba(255, 51, 102, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+            e.currentTarget.style.backgroundPosition = 'left center';
+          }}
+        >
+          🎯 START GAME
+        </button>
+        
+        {/* Feature badges */}
+        <div style={{
+          marginTop: '60px',
+          display: 'flex',
+          gap: '20px',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+        }}>
+          {[
+            { icon: '🎭', text: 'Tricky Traps' },
+            { icon: '🌟', text: '8 Levels' },
+            { icon: '💀', text: 'Endless Deaths' },
+            { icon: '🪙', text: 'Collect Coins' },
+          ].map((badge, i) => (
+            <div key={i} style={{
+              padding: '10px 20px',
+              background: 'rgba(255, 255, 255, 0.05)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '20px',
+              fontSize: '16px',
+              color: '#fff',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+            }}>
+              <span style={{ fontSize: '20px' }}>{badge.icon}</span>
+              <span style={{ fontWeight: '500' }}>{badge.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      
       <style>
         {`
           @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.02); }
           }
           @keyframes blink {
             0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0; }
+            25%, 75% { opacity: 0.3; }
+          }
+          @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+          }
+          @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 107, 53, 0.8), 0 0 20px rgba(255, 107, 53, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(255, 107, 53, 1), 0 0 40px rgba(255, 107, 53, 0.8); }
+          }
+          @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
           }
         `}
       </style>
@@ -1809,7 +1958,7 @@ const BorisGame = () => {
             animation: 'pulse 2s infinite',
           }}
         >
-          🎉 YOU BEAT LEVEL DEVIL!
+          🎉 YOU BEAT KOOOL SHIT!
         </h1>
         <div style={{ fontSize: '24px', marginBottom: '20px' }}>
           <p data-testid="total-deaths">Total deaths: {totalDeathsRef.current} 💀</p>
